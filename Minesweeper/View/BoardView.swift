@@ -19,7 +19,7 @@ struct BoardView: View {
                     }
                 }
             }
-        }.alert(isPresented: $game.didLose) {
+        }.alert(isPresented: $game.gameOver) {
             Alert(title: Text("Oh no!"),
                   message: Text("You clicked on a bomb"),
                   primaryButton: .destructive(Text("Reset")) {

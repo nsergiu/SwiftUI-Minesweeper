@@ -15,17 +15,34 @@ class Game: ObservableObject {
     @Published var board: [[Cell]]
 
     @Published var didLose: Bool = false
+    @Published var gameOver: Bool = false
+    
+    @Published var hiddenBombs: Int = 0
+    @Published var time: Int = 0
+    var timer: Timer?
 
     init(from settings: GameSettings) {
         self.settings = settings
+        hiddenBombs = settings.numberOfBombs
         board = Self.generateBoard(from: settings)
+        self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(fireTimer), userInfo: nil, repeats: true)
+    }
+    
+    @objc func fireTimer() {
+        time += 1
     }
 
     func click(on cell: Cell) {
+        guard !didLose else {
+            return
+        }
         // Check we didn't click on a bomb
         if cell.status == .bomb {
             cell.isOpened = true
             didLose = true
+            gameOver = true
+            hiddenBombs -= 1;
+            self.timer?.invalidate()
         } else {
             reveal(for: cell)
         }
@@ -39,6 +56,14 @@ class Game: ObservableObject {
         }
 
         cell.isFlagged = !cell.isFlagged
+        if (cell.isFlagged) {
+            hiddenBombs -= 1;
+            if hiddenBombs == 0 {
+                timer?.invalidate()
+            }
+        } else {
+            hiddenBombs += 1;
+        }
 
         self.objectWillChange.send()
     }
@@ -46,6 +71,10 @@ class Game: ObservableObject {
     func reset() {
         board = Self.generateBoard(from: settings)
         didLose = false
+        hiddenBombs = settings.numberOfBombs
+        time = 0
+        self.timer?.invalidate()
+        self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(fireTimer), userInfo: nil, repeats: true)
     }
 
     // MARK: - Private Functions
@@ -76,11 +105,21 @@ class Game: ObservableObject {
             let bottomCell = board[min(cell.row + 1, board.count - 1)][cell.column]
             let leftCell = board[cell.row][max(0, cell.column - 1)]
             let rightCell = board[cell.row][min(cell.column + 1, board[0].count - 1)]
+            
+            let topLeftCell = board[max(0, cell.row - 1)][max(0, cell.column - 1)]
+            let topRightCell = board[max(0, cell.row - 1)][min(cell.column + 1, board[0].count - 1)]
+            let bottomLeftCell = board[min(cell.row + 1, board.count - 1)][max(0, cell.column - 1)]
+            let bottomRightCell = board[min(cell.row + 1, board.count - 1)][min(cell.column + 1, board[0].count - 1)]
 
             reveal(for: topCell)
             reveal(for: bottomCell)
             reveal(for: leftCell)
             reveal(for: rightCell)
+            
+            reveal(for: topLeftCell)
+            reveal(for: topRightCell)
+            reveal(for: bottomLeftCell)
+            reveal(for: bottomRightCell)
         }
     }
 

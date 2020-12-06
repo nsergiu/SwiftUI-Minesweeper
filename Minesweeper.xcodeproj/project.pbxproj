@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		68A3FFEB257D04B100377B0D /* ToolbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A3FFEA257D04B100377B0D /* ToolbarView.swift */; };
 		8FB558DE2533D02B0034EF30 /* MinesweeperApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FB558DD2533D02B0034EF30 /* MinesweeperApp.swift */; };
 		8FB558E22533D02E0034EF30 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8FB558E12533D02E0034EF30 /* Assets.xcassets */; };
 		8FB558E52533D02E0034EF30 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8FB558E42533D02E0034EF30 /* Preview Assets.xcassets */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		68A3FFEA257D04B100377B0D /* ToolbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarView.swift; sourceTree = "<group>"; };
 		8FB558DA2533D02B0034EF30 /* Minesweeper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Minesweeper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8FB558DD2533D02B0034EF30 /* MinesweeperApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinesweeperApp.swift; sourceTree = "<group>"; };
 		8FB558E12533D02E0034EF30 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -94,6 +96,7 @@
 		8FB558FB253506E30034EF30 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				68A3FFEA257D04B100377B0D /* ToolbarView.swift */,
 				8FB558FC253506F60034EF30 /* CellView.swift */,
 				8FB558FF253509D00034EF30 /* BoardView.swift */,
 			);
@@ -171,6 +174,7 @@
 			files = (
 				8FB558F92535054B0034EF30 /* Cell+Status.swift in Sources */,
 				8FB558DE2533D02B0034EF30 /* MinesweeperApp.swift in Sources */,
+				68A3FFEB257D04B100377B0D /* ToolbarView.swift in Sources */,
 				8FB558F6253505240034EF30 /* Cell.swift in Sources */,
 				8FB558EF2533D1FB0034EF30 /* GameSettings.swift in Sources */,
 				8FB55900253509D00034EF30 /* BoardView.swift in Sources */,

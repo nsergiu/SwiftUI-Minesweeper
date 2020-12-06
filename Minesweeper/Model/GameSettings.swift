@@ -16,10 +16,10 @@ class GameSettings: ObservableObject {
     @Published var numberOfColumns = 10
 
     /// The total number of bombs
-    @Published var numberOfBombs = 10
+    @Published var numberOfBombs = 20
 
     /// The size each square should be based on the width of the screen
     var squareSize: CGFloat {
-        UIScreen.main.bounds.width / CGFloat(numberOfColumns)
+        min(UIScreen.main.bounds.width, UIScreen.main.bounds.height) / CGFloat(numberOfColumns)
     }
 }

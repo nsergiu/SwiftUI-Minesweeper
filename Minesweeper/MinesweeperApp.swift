@@ -9,12 +9,26 @@ import SwiftUI
 
 @main
 struct MinesweeperApp: App {
-    var gameSettings = GameSettings()
+    var game = Game(from: GameSettings())
 
     var body: some Scene {
         WindowGroup {
-            BoardView()
-                .environmentObject(Game(from: gameSettings))
+            VStack {
+                ToolbarView()
+                BoardView()
+            }
+            .environmentObject(game)
         }
+    }
+}
+
+struct MinesweeperApp_Preview : PreviewProvider {
+    private static var game = Game(from:GameSettings())
+    static var previews : some View {
+        VStack {
+            ToolbarView()
+            BoardView()
+        }
+        .environmentObject(game)
     }
 }
