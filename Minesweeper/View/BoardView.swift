@@ -20,8 +20,8 @@ struct BoardView: View {
                 }
             }
         }.alert(isPresented: $game.gameOver) {
-            Alert(title: Text("Oh no!"),
-                  message: Text("You clicked on a bomb"),
+            Alert(title: Text(game.didLose ? "Oh no!" : "You won!"),
+                  message: Text(game.didLose ? "You clicked on a bomb" : "You found all the bombs"),
                   primaryButton: .destructive(Text("Reset")) {
                     game.reset()
                   }, secondaryButton: .cancel())

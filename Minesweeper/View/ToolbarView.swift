@@ -12,6 +12,24 @@ extension Color {
     static var redmondShadow = Color(white: 0.55)
 }
 
+struct RedmondButtonStyle: ButtonStyle {
+    @State var lineWidth: CGFloat = 2
+
+    func makeBody(configuration: Self.Configuration) -> some View {
+        let offset = configuration.isPressed ? lineWidth : 0
+        return configuration.label
+            .offset(x: offset, y: offset).animation(nil)
+            .background(
+                ZStack {
+                    Corner(style: configuration.isPressed ? .topLeft : .bottomRight).stroke(Color.redmondShadow, lineWidth: lineWidth).padding(lineWidth)
+                    Corner(style: configuration.isPressed ? .bottomRight : .topLeft).stroke(Color.white, lineWidth: lineWidth)
+                    Corner(style: configuration.isPressed ? .topLeft : .bottomRight).stroke(Color.black, lineWidth: lineWidth)
+                }
+                .animation(nil)
+            )
+    }
+}
+
 struct Corner: Shape {
     enum Style { case topLeft, bottomRight }
 
@@ -38,9 +56,16 @@ struct ToolbarView: View {
                 .background(Color.black)
                 .font(.custom("digital-7", size: 28))
             Spacer()
-            Button("reset") {
+            Button( action: {
                 game.reset()
+            }) {
+                Image(systemName: "smiley.fill")
+                    .resizable(capInsets: EdgeInsets(top: 4, leading: 4, bottom: 4, trailing: 4), resizingMode: .stretch)
+                    .frame(width: 32, height: 32, alignment: .center)
+                    .foregroundColor(.yellow)
             }
+            .frame(width: 48, height: 48, alignment: .center)
+            .buttonStyle(RedmondButtonStyle())
             Spacer()
             Text("\(game.time)")
                 .frame(minWidth: 36, idealWidth: 48, maxWidth: 64, minHeight: 22, idealHeight: 24, maxHeight: 28, alignment: .trailing)

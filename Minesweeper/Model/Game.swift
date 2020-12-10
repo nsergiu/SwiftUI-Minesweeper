@@ -15,8 +15,10 @@ class Game: ObservableObject {
     @Published var board: [[Cell]]
 
     @Published var didLose: Bool = false
+    @Published var didWon: Bool = false
     @Published var gameOver: Bool = false
     
+    @Published var cellsRevealed: Int = 0
     @Published var hiddenBombs: Int = 0
     @Published var time: Int = 0
     var timer: Timer?
@@ -71,8 +73,10 @@ class Game: ObservableObject {
     func reset() {
         board = Self.generateBoard(from: settings)
         didLose = false
+        didWon = false
         hiddenBombs = settings.numberOfBombs
         time = 0
+        cellsRevealed = 0
         self.timer?.invalidate()
         self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(fireTimer), userInfo: nil, repeats: true)
     }
@@ -96,6 +100,10 @@ class Game: ObservableObject {
         if cell.status != .bomb {
             cell.status = .exposed(exposedCount)
             cell.isOpened = true
+            cellsRevealed += 1
+            if board.count * board.count - settings.numberOfBombs == cellsRevealed {
+                didWon = true
+            }
         }
 
         if (exposedCount == 0) {
