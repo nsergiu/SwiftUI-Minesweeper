@@ -35,7 +35,7 @@ class Game: ObservableObject {
     }
 
     func click(on cell: Cell) {
-        guard !didLose else {
+        guard !didWon && !didLose else {
             return
         }
         // Check we didn't click on a bomb
@@ -44,7 +44,7 @@ class Game: ObservableObject {
             didLose = true
             gameOver = true
             hiddenBombs -= 1;
-            self.timer?.invalidate()
+            timer?.invalidate()
         } else {
             reveal(for: cell)
         }
@@ -60,9 +60,6 @@ class Game: ObservableObject {
         cell.isFlagged = !cell.isFlagged
         if (cell.isFlagged) {
             hiddenBombs -= 1;
-            if hiddenBombs == 0 {
-                timer?.invalidate()
-            }
         } else {
             hiddenBombs += 1;
         }
@@ -103,6 +100,8 @@ class Game: ObservableObject {
             cellsRevealed += 1
             if board.count * board.count - settings.numberOfBombs == cellsRevealed {
                 didWon = true
+                gameOver = true
+                timer?.invalidate()
             }
         }
 
