@@ -34,6 +34,6 @@ struct CellView: View {
 struct CellView_Previews: PreviewProvider {
     static var previews: some View {
         CellView(cell: Cell(row: 0, column: 0))
-            .environmentObject(Game(from: GameSettings())) // Add the env object so that our CellView can access it.
+            .environmentObject(Game(from: GameSettings())) 
     }
 }

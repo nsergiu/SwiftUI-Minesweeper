@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		68A3FFEB257D04B100377B0D /* ToolbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A3FFEA257D04B100377B0D /* ToolbarView.swift */; };
+		68A3FFEE258265D300377B0D /* digital-7.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 68A3FFED258265D300377B0D /* digital-7.ttf */; };
 		8FB558DE2533D02B0034EF30 /* MinesweeperApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FB558DD2533D02B0034EF30 /* MinesweeperApp.swift */; };
 		8FB558E22533D02E0034EF30 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8FB558E12533D02E0034EF30 /* Assets.xcassets */; };
 		8FB558E52533D02E0034EF30 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8FB558E42533D02E0034EF30 /* Preview Assets.xcassets */; };
@@ -21,6 +22,7 @@
 
 /* Begin PBXFileReference section */
 		68A3FFEA257D04B100377B0D /* ToolbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarView.swift; sourceTree = "<group>"; };
+		68A3FFED258265D300377B0D /* digital-7.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "digital-7.ttf"; sourceTree = "<group>"; };
 		8FB558DA2533D02B0034EF30 /* Minesweeper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Minesweeper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8FB558DD2533D02B0034EF30 /* MinesweeperApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinesweeperApp.swift; sourceTree = "<group>"; };
 		8FB558E12533D02E0034EF30 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -68,6 +70,7 @@
 				8FB558ED2533D1C90034EF30 /* Model */,
 				8FB558DD2533D02B0034EF30 /* MinesweeperApp.swift */,
 				8FB558E12533D02E0034EF30 /* Assets.xcassets */,
+				68A3FFED258265D300377B0D /* digital-7.ttf */,
 				8FB558E62533D02E0034EF30 /* Info.plist */,
 				8FB558E32533D02E0034EF30 /* Preview Content */,
 			);
@@ -161,6 +164,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8FB558E52533D02E0034EF30 /* Preview Assets.xcassets in Resources */,
+				68A3FFEE258265D300377B0D /* digital-7.ttf in Resources */,
 				8FB558E22533D02E0034EF30 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
